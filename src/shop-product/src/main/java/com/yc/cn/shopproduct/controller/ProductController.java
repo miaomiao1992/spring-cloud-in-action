@@ -10,6 +10,6 @@ public class ProductController {
     @GetMapping("/product/{pid}")
     public String product(@PathVariable("pid") Integer pid) {
 
-        return "222";
+        return "2224";
     }
 }
