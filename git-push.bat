@@ -10,6 +10,7 @@ echo start %remarks%
 :: add any file you want to push
 git add git-push.bat
 
+git add book
 git add src
 git add log.txt
 
