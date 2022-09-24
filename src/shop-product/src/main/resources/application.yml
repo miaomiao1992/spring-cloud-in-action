@@ -1,0 +1,7 @@
+server:
+  port: 8002
+
+spring:
+  # 服务逻辑名称
+  application:
+    name: shop-product
