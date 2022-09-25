@@ -14,8 +14,8 @@
         <module>shop-user</module>
         <module>shop-product</module>
         <module>shop-order</module>
-
     </modules>
+
 
     <!--
     依赖关系
@@ -26,6 +26,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
