@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3e233738-e07a-43e5-acbf-ef09caf41761" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-product/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-product/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-product/src/main/java/com/yc/cn/shopproduct/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-product/src/main/java/com/yc/cn/shopproduct/controller/ProductController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
     <property name="show.run.dashboard.notification" value="false" />
   </component>
   <component name="RunAnythingCache">
@@ -205,19 +203,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ShopProductApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ShopCommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="shop-common" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.shopcommon.ShopCommonApplication" />
@@ -269,6 +254,7 @@
       <workItem from="1663993110838" duration="1525000" />
       <workItem from="1664020056128" duration="1056000" />
       <workItem from="1664021608726" duration="782000" />
+      <workItem from="1664166293310" duration="125000" />
     </task>
     <servers />
   </component>
