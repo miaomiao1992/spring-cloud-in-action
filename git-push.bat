@@ -9,6 +9,8 @@ echo start %remarks%
 
 :: add any file you want to push
 git add git-push.bat
+git add git-manage-in-java.bat
+git add git-manage-in-java.jar
 
 git add book
 git add src
@@ -19,4 +21,3 @@ git commit -m  %remarks%
 git push origin main
 
 echo --End--
-@pause
