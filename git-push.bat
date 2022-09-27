@@ -12,6 +12,7 @@ git add git-push.bat
 git add git-manage-in-java.bat
 git add git-manage-in-java.jar
 
+git add demo
 git add book
 git add src
 git add log.txt
