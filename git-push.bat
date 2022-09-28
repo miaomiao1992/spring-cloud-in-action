@@ -22,4 +22,3 @@ git commit -m  %remarks%
 git push origin main
 
 echo --End--
-@pause
