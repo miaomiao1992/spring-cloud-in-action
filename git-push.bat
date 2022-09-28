@@ -11,11 +11,14 @@ echo start %remarks%
 git add git-push.bat
 git add git-manage-in-java.bat
 git add git-manage-in-java.jar
-
-git add demo
-git add book
-git add src
 git add log.txt
+
+git add book
+git add demo
+git add need-to-tidy
+git add src
+
+
 
 git commit -m  %remarks%
 
