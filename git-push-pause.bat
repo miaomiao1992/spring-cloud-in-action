@@ -1,4 +1,3 @@
-@echo off
-git-push.bat
+call git-push.bat
 
-@pause
+pause
