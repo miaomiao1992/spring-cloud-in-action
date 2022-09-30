@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="simpleservice" />
+        <module name="licensing-service" />
+        <module name="confsvr" />
+        <module name="licensing-service-chapter3" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="chapter1" target="9" />
+      <module name="chapter2" target="9" />
+      <module name="chapter3" target="9" />
+      <module name="confsvr" target="9" />
+      <module name="licensing-service" target="9" />
+      <module name="licensing-service-chapter3" target="9" />
+      <module name="simpleservice" target="9" />
+      <module name="spmia-spring-microservices" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
