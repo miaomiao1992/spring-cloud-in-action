@@ -21,6 +21,7 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public CommonResult login(@RequestParam String username, @RequestParam String password) {
+        System.out.println("log");
         SaTokenInfo saTokenInfo = userService.login(username, password);
         if (saTokenInfo == null) {
             return CommonResult.validateFailed("用户名或密码错误");
