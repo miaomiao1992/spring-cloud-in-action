@@ -1,1 +1,13 @@
 https://github.com/zhoutaoo/SpringCloud
+
+秒杀系统
+https://github.com/techa03/goodsKill
+https://gitee.com/techa/goodsKill
+
+PassJava 学习教程
+关注微信：悟空聊架构
+https://github.com/Jackson0714/PassJava-Platform
+
+mall
+https://github.com/macrozheng/mall
+https://github.com/macrozheng/springcloud-learning

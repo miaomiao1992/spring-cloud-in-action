@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  main:
+    allow-circular-references: true
+dubbo:
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: -1
+  consumer:
+    timeout: 30000
+  ## 此处有坑，如配置了具体的service名，对应的注入此service上的注解@DubboReference(check=false)会失效
+  cloud:
+    subscribed-services: "goodskill-service-provider,"
+  registry:
+    address: spring-cloud://localhost
+
+
+seata:
+  enabled: true
+  #1.4.2使用此配置禁用seata
+  enable-auto-data-source-proxy: true
+  application-id: goodskill-seata
+  tx-service-group: my_test_tx_group
+  config:
+    type: nacos
+    nacos:
+      namespace:
+      serverAddr: nacos:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: nacos:8848
+      group: SEATA_GROUP
+      namespace:
+      username: "nacos"
+      password: "nacos"

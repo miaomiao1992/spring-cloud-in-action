@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   <!--activeMQ配置-->
+   <!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供 -->
+   <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+      <property name="brokerURL" value="${mq_address}"/>
+   </bean>
+
+   <!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory -->
+   <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+      <property name="targetConnectionFactory" ref="targetConnectionFactory"/>
+   </bean>
+
+   <!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
+   <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+      <property name="connectionFactory" ref="connectionFactory"/>
+      <property name="defaultDestination" ref="queueDestination"/>
+      <property name="receiveTimeout" value="30000"/>
+   </bean>
+
+   <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+      <property name="connectionFactory" ref="connectionFactory"/>
+      <property name="defaultDestination" ref="topicDestination"/>
+   </bean>
+
+   <bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+      <constructor-arg>
+         <value>goodsKill</value>
+      </constructor-arg>
+   </bean>
+
+   <bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
+      <constructor-arg value="seckillTopic"/>
+   </bean>
+
+   <!-- 秒杀消息监听容器 -->
+   <bean id="jmsContainer"
+         class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+      <property name="connectionFactory" ref="connectionFactory" />
+      <property name="destination" ref="queueDestination" />
+      <property name="messageListener" ref="seckillActiveConsumer"/>
+      <!--设置同时监听的消费者数量，设置多个会出现超卖-->
+      <!--<property name="concurrency" value="2"/>-->
+   </bean>
+
+   <bean id="seckillActiveConsumer" class="org.seckill.service.mq.SeckillActiveConsumer"/>
+
+    <!--kafka消息队列-->
+    <!--生产者工厂-->
+   <bean id="kafkaProducerFactory" class="org.springframework.kafka.core.DefaultKafkaProducerFactory">
+      <constructor-arg>
+         <map>
+            <entry key="bootstrap.servers" value="${bootstrap.servers}"/>
+            <entry key="retries" value="1"/>
+            <entry key="batch.size" value="16384"/>
+            <entry key="buffer.memory" value="10285760"/>
+         </map>
+      </constructor-arg>
+      <constructor-arg type="org.apache.kafka.common.serialization.Serializer" ref="IntegerSerializer"/>
+      <constructor-arg type="org.apache.kafka.common.serialization.Serializer" ref="StringSerializer"/>
+   </bean>
+    <!--消费者工厂-->
+   <bean id="kafkaConsumerFactory" class="org.springframework.kafka.core.DefaultKafkaConsumerFactory">
+      <constructor-arg>
+         <map>
+            <entry key="bootstrap.servers" value="${bootstrap.servers}"/>
+            <entry key="group.id" value="test"/>
+            <entry key="session.timeout.ms" value="30000"/>
+         </map>
+      </constructor-arg>
+      <constructor-arg type="org.apache.kafka.common.serialization.Deserializer" ref="IntegerDeserializer"/>
+      <constructor-arg type="org.apache.kafka.common.serialization.Deserializer" ref="StringDeserializer"/>
+   </bean>
+
+   <bean id="kafkaTemplate" class="org.springframework.kafka.core.KafkaTemplate">
+      <constructor-arg ref="kafkaProducerFactory"/>
+      <property name="defaultTopic" value="goodsKill"></property>
+   </bean>
+    <!--消息监听容器-->
+   <bean id="messageListenerContainer" class="org.springframework.kafka.listener.KafkaMessageListenerContainer"
+         init-method="doStart">
+      <constructor-arg ref="kafkaConsumerFactory"/>
+      <constructor-arg ref="containerProperties"/>
+   </bean>
+
+   <bean id="containerProperties" class="org.springframework.kafka.listener.config.ContainerProperties">
+      <constructor-arg>
+         <list>
+            <value>goodsKill</value>
+         </list>
+      </constructor-arg>
+      <property name="messageListener" ref="seckillKafkaConsumer"/>
+   </bean>
+    <!--队列监听器-->
+   <bean id="seckillKafkaConsumer" class="org.seckill.service.mq.SekcillKafkaConsumer"/>
+   <bean id="IntegerSerializer" class="org.apache.kafka.common.serialization.IntegerSerializer"/>
+   <bean id="StringSerializer" class="org.apache.kafka.common.serialization.StringSerializer"/>
+   <bean id="IntegerDeserializer" class="org.apache.kafka.common.serialization.IntegerDeserializer"/>
+   <bean id="StringDeserializer" class="org.apache.kafka.common.serialization.StringDeserializer"/>
+    <!--kafka消息队列 end-->
+
+</beans>
