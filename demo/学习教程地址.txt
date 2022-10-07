@@ -12,11 +12,14 @@ mall
 关注微信：macrozheng
 https://github.com/macrozheng/mall
 https://github.com/macrozheng/springcloud-learning
-教程：
+学习总站
+https://www.macrozheng.com/k8s/k8s_catalog.html#%E5%85%AC%E4%BC%97%E5%8F%B7
+微信教程：
 mall学习教程
 https://mp.weixin.qq.com/s?__biz=MzU1Nzg4NjgyMw==&mid=100000048&idx=1&sn=46d84151d9cf307ae72adc3179974570&chksm=7c2fbd384b58342e0e21a469dc4683c0bfd44ab2f31bbf9eb9b03e90b9c8a0af0a3d975deeef&mpshare=1&scene=23&srcid=
 SpringCloud教程
 https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU1Nzg4NjgyMw==&action=getalbum&album_id=1344323159075553282&scene=173&from_msgid=2247485818&from_itemidx=1&count=3&nolastread=1#wechat_redirect
+
 开箱即用！看看人家的微服务权限解决方案，那叫一个优雅！
 https://zhuanlan.zhihu.com/p/405992809
 微服务权限终极解决方案，Spring Cloud Gateway + Oauth2 实现统一认证和鉴权！
